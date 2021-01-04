@@ -1,9 +1,9 @@
 import os
 import csv
 
-month = []
 profits_losses = []
 change_values = []
+months =[]
 
 net_total = 0
 months_total = 0
@@ -19,6 +19,8 @@ with open(bank_csv) as bank_file:
         profits_losses.append(row[1])
         change_values = [int(profits_losses[i + 1]) - int(profits_losses[i]) for i in range(len(profits_losses)-1)]    
         change_total = sum(change_values)
+        months.append(row[0])
+        months.remove(0)
         
 average_change = change_total/len(change_values)        
         
@@ -27,11 +29,8 @@ print("------------------------------")
 print(f"Total Months: {months_total}")  
 print(f"Total: ${net_total}")
 print(f"Average Change: ${round(average_change,2)}")
-
-# print(profits_losses)
-# print(change_values)
-# print(len(change_values))
-# print(change_total)
+print(f"Greated Increase in Profits: ${max(change_values)}")
+print(f"Greatest Decrease in Profits: ${min(change_values)}")
 
 
 
