@@ -3,7 +3,8 @@ import csv
 
 profits_losses = []
 change_values = []
-months =[]
+months = []
+change_tracking =[]
 
 net_total = 0
 months_total = 0
@@ -20,7 +21,8 @@ with open(bank_csv) as bank_file:
         change_values = [int(profits_losses[i + 1]) - int(profits_losses[i]) for i in range(len(profits_losses)-1)]    
         change_total = sum(change_values)
         months.append(row[0])
-        months.remove(0)
+        months_indexed = months[:0] + months[0+1:]
+        change_tracking = {change_values[i]: months_indexed[i]  for i in range(len(months_indexed))}
         
 average_change = change_total/len(change_values)        
         
@@ -29,8 +31,7 @@ print("------------------------------")
 print(f"Total Months: {months_total}")  
 print(f"Total: ${net_total}")
 print(f"Average Change: ${round(average_change,2)}")
-print(f"Greated Increase in Profits: ${max(change_values)}")
-print(f"Greatest Decrease in Profits: ${min(change_values)}")
-
+print(f"Greated Increase in Profits: {(change_tracking[max(change_tracking)])} ${max(change_values)}")
+print(f"Greatest Decrease in Profits: {(change_tracking[min(change_tracking)])} ${min(change_values)}")
 
 
