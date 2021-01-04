@@ -14,7 +14,15 @@ with open(bank_csv) as bank_file:
     csv_reader = next(csvreader)                   
     for row in csvreader:
         months_total += 1
-print(months_total)     
+        net_total += int(row[1])
+    
+
+print("Financial Analysis") 
+print("------------------------------")
+print(f"Total Months: {months_total}")  
+print(f"Total: ${net_total}")
+                
+        
     
     
 
@@ -22,11 +30,3 @@ print(months_total)
 
 
 
-
-# print("Election Results")
-# print("-------------------")
-# print(f"Total Votes: {total votes}")
-
-# print("-------------------")
-# print(f"Winner: {}")
-# print("-------------------")
