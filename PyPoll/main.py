@@ -25,18 +25,20 @@ with open(poll_csv) as poll_file:
             results[2] += 1
         else:
             results[3] += 1
+        votes_people = {results[i]:people[i] for i in range(len(people))}
         
-print(people)
-print(len(people))
-print(results)
+# print(people)
+# print(len(people))
+# print(results)
+# print(votes_people)
             
 print("Election Results")
 print("-------------------")
 print(f"Total Votes: {len(candidates)}")
-print(f"{people[0]}: {(results[0]/len(candidates))*100}% ({results[0]})")
-print(f"{people[1]}: ({results[1]})")
-print(f"{people[2]}: ({results[2]})")
-print(f"{people[3]}: ({results[3]})")
+print(f"{people[0]}: {round((results[0]/len(candidates))*100,3)}% ({results[0]})")
+print(f"{people[1]}: {round((results[1]/len(candidates))*100,3)}% ({results[1]})")
+print(f"{people[2]}: {round((results[2]/len(candidates))*100,3)}% ({results[2]})")
+print(f"{people[3]}: {round((results[3]/len(candidates))*100,3)}% ({results[3]})")
 print("-------------------")
-# print(f"Winner: {}")
+print(f"Winner: {votes_people[max(votes_people)]}")
 print("-------------------")
